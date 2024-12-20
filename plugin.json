@@ -1,0 +1,15 @@
+{
+  "pluginName": "AI Image Generator",
+  "description": "Generate AI images using Stable Diffusion",
+  "version": "0.0.1",
+  "author": "Your Name",
+  "main": "index.html",
+  "logo": "assets/images/icon2.png",
+  "features": [
+    {
+      "code": "ai-image",
+      "explain": "Generate AI Images",
+      "cmds": ["ai image", "生成图片", "AI绘画"]
+    }
+  ]
+} 

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #0f0c29;
+    background: -webkit-linear-gradient(to right, #302b63, #24243e);
+    background: linear-gradient(to right, #302b63, #24243e);
+    color: #f1f1f1;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* ... 其他样式代码 ... */ 

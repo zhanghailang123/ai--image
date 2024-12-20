@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="logo">
+        <img src="assets/images/icon2.png" alt="AI Logo">
+        <span>AI Image Generator</span>
+    </div>
+    <div id="main">
+        <h3>全息色彩风格 Holographic</h3>
+        <textarea id="promptInput1" placeholder="Enter your prompt">A vintage, screen-printed illustration in a bold, pop-art style,</textarea>
+        <button id="generateButton1">Generate</button>
+        <div id="result">
+            <!-- <img id="generatedImage1" alt="Generated Image"> -->
+        </div>
+
+        <textarea id="promptInput2" placeholder="Enter your prompt">watercolor paint style,</textarea>
+        <button id="generateButton2">Generate</button>
+        <div id="result2">
+            <!-- <img id="generatedImage2" alt="Generated Image"> -->
+        </div>
+
+        <textarea id="promptInput3" placeholder="Enter your prompt">Knolling style,</textarea>
+        <button id="generateButton3">Generate</button>
+        <div id="result3">
+            <!-- <img id="generatedImage3" alt="Generated Image"> -->
+        </div>
+
+        <div id="status"></div>
+        <div id="generatedImagesContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+    <script src="src/lib/api.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html> 
