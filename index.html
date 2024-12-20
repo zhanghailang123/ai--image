@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Image Generator</title>
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/images/icon2.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="assets/images/icon2.png">
 </head>
@@ -13,32 +18,53 @@
         <span>AI Image Generator</span>
     </div>
     <div id="main">
-        <h3>全息色彩风格 Holographic</h3>
-        <textarea id="promptInput1" placeholder="Enter your prompt">A vintage, screen-printed illustration in a bold, pop-art style,</textarea>
-        <button id="generateButton1">Generate</button>
-        <div id="result">
-            <!-- <img id="generatedImage1" alt="Generated Image"> -->
+        <h3>基于 Stable Diffusion 的 AI 图片生成器</h3>
+        
+        <!-- 添加参数设置区域 -->
+        <div class="settings-container">
+            <div class="setting-group">
+                <label for="modelSelect">Model:</label>
+                <select id="modelSelect" class="setting-input">
+                    <option value="flux">Flux</option>
+                    <option value="realistic">Realistic</option>
+                    <option value="anime">Anime</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="sizeSelect">Size:</label>
+                <select id="sizeSelect" class="setting-input">
+                    <option value="4:3">4:3</option>
+                    <option value="1:1">1:1</option>
+                    <option value="3:4">3:4</option>
+                    <option value="16:9">16:9</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="batchSize">Batch Size:</label>
+                <select id="batchSize" class="setting-input">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="negativePrompt">Negative Prompt:</label>
+                <textarea id="negativePrompt" class="setting-input" rows="2">blurry, distorted, ugly, bad anatomy, text, watermark, signature, extra limbs, disfigured</textarea>
+            </div>
         </div>
 
-        <textarea id="promptInput2" placeholder="Enter your prompt">watercolor paint style,</textarea>
-        <button id="generateButton2">Generate</button>
-        <div id="result2">
-            <!-- <img id="generatedImage2" alt="Generated Image"> -->
-        </div>
-
-        <textarea id="promptInput3" placeholder="Enter your prompt">Knolling style,</textarea>
-        <button id="generateButton3">Generate</button>
-        <div id="result3">
-            <!-- <img id="generatedImage3" alt="Generated Image"> -->
-        </div>
-
+        <textarea id="promptInput" placeholder="Enter your prompt">A vintage, screen-printed illustration in a bold, pop-art style,</textarea>
+        <button id="generateButton">开始生成</button>
+        <div id="result"></div>
         <div id="status"></div>
         <div id="generatedImagesContainer"></div>
     </div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-    <script src="src/lib/api.js"></script>
-    <script src="src/main.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/uuid@9.0.1/dist/umd/uuidv4.min.js"></script>
+    <script defer src="src/lib/api.js"></script>
+    <script defer src="src/main.js"></script>
 </body>
 </html> 

@@ -12,7 +12,17 @@ const API = {
         return this.userAgents[Math.floor(Math.random() * this.userAgents.length)];
     },
 
-    async createPics(prompt) {
+    // 添加缓存机制
+    cache: new Map(),
+
+    async createPics(prompt, options = {}) {
+        // 检查缓存
+        const cacheKey = JSON.stringify({ prompt, options });
+        if (this.cache.has(cacheKey)) {
+            console.log('Using cached result');
+            return this.cache.get(cacheKey);
+        }
+
         console.log('Creating pics with prompt:', prompt);
         try {
             const headers = {
@@ -21,16 +31,22 @@ const API = {
                 'Uniqueid': uuidv4()
             };
             const url = "https://stablediffusion3net.erweima.ai/api/v1/generate/create";
+            
+            // 合并默认选项和用户选项
             const payload = {
-                "prompt": prompt,
-                "negativePrompt": "blurry, distorted, ugly, bad anatomy, text, watermark, signature, extra limbs, disfigured",
-                "model": "flux",
-                "size": "4:3",
-                "batchSize": "2",
-                "imageUrl": ""
+                prompt,
+                negativePrompt: options.negativePrompt || "blurry, distorted, ugly, bad anatomy, text, watermark, signature, extra limbs, disfigured",
+                model: options.model || "flux",
+                size: options.size || "4:3",
+                batchSize: options.batchSize || "2",
+                imageUrl: ""
             };
+
             const response = await axios.post(url, payload, {headers});
             console.log('API Response:', response.data);
+
+            // 存入缓存
+            this.cache.set(cacheKey, response.data.data.recordUuid);
             return response.data.data.recordUuid;
         } catch (error) {
             console.error('API Error:', error);
